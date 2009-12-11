@@ -62,14 +62,14 @@ var logColorsDefaults = {
                 };
 
 var logAttrs = {
-                 "standard"  : tc.attrs.DEFAULT,
+                 "standard"  : tc.attrs.RESET,
                  "info"      : tc.attrs.BRIGHT,
                  "warn"      : tc.attrs.BRIGHT,
                  "error"     : tc.attrs.BRIGHT
                 };
 
 var logAttrsDefaults = {
-                 "standard"  : tc.attrs.DEFAULT,
+                 "standard"  : tc.attrs.RESET,
                  "info"      : tc.attrs.BRIGHT,
                  "warn"      : tc.attrs.BRIGHT,
                  "error"     : tc.attrs.BRIGHT
@@ -191,7 +191,7 @@ var cleanmsg = function(msg) {
 
 var dolog = function(type, msg, color, bg, attr) {
     msg = cleanmsg(msg);
-    tc.terminalSetFontAttr(tc.attrs.RESET);
+    tc.terminalFontReset();
     tc.terminalSetFont(color, bg, attr);
     var prefix, postfix;
     if (typeof dodads[type + "_prefix"] == "function") {
