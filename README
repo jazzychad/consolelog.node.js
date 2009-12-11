@@ -1,1 +1,367 @@
-this is a readme file
+/*
+ * consolelog.node.js
+ *
+ * This is a collection of two node.js modules:
+ *   termcolor.js  - terminal color output and cursor positioning manipulation
+ *   consolelog.js - console log output stylization and customization (uses termcolor module)
+ *
+ * Please note: I am not a terminal emulation expert. This may not work in every terminal
+ * emulator. Your mileage may vary.
+ *
+ * by Chad Etzel - December 11, 2009
+ *
+ * Hacker License:
+ *    Feel free to hack at will
+ */
+
+==================================
+=                                =
+=           example.js           =
+=                                =
+==================================
+
+An example node.js script which demonstrates some of the functionality
+of the two included modules.
+
+To run, issue the following at a command prompt:
+node example.js
+
+==================================
+=                                =
+=          termcolor.js          =
+=                                =
+==================================
+
+terminal color output and cursor positioning module.
+
+example usage:
+
+var tc = require("./termcolor");
+
+PUBLIC FUNCTIONS:
+
+cursorPosition(row,col);
+  Overview:
+    Positions the terminal cursor at the row and column specified.
+  Parameter:  
+    row - (number) value of the row to which the cursor will move.
+    col - (number) value of the column to which the cursor will move.
+
+cursorUp(i);
+  Overview:
+    Moves the cursor up the specified number of rows
+  Parameter:  
+    i - (number) OPTIONAL - number of rows to move cursor up. If unspecified the value defaults to 1.
+
+cursorDown(i);
+  Overview:
+    Moves the cursor down the specified number of rows
+  Parameter:  
+    i - (number) OPTIONAL - number of rows to move cursor down. If unspecified the value defaults to 1.
+
+cursorForward(i);
+  Overview:
+    Moves the cursor forward the specified number of columns
+  Parameter:  
+    i - (number) OPTIONAL - number of columns to move cursor forward. If unspecified the value defaults to 1.
+
+cursorBack(i);
+  Overview:
+    Moves the cursor back the specified number of columns
+  Parameter:  
+    i - (number) OPTIONAL - number of columns to move cursor back. If unspecified the value defaults to 1.
+
+terminalFontReset();
+  Overview:
+    Resets the terminal "font" (color, background, attributes) to the terminal defaults.
+  Parameter:  
+    none;
+
+terminalSetFont(color, bg, attr);
+  Overview:
+    Sets the terminal "font" (color, background, attributes) to the specified values.
+  Parameter:  
+    color - (number) value of the color to use (use the colors map)
+    bg    - (number) value of the background to use (use the colors map)
+    attr  - (number) value of the attribute to use (use the attrs map)
+
+terminalSetFontColor(color);
+  Overview:
+    Sets the terminal "font" color to the specified value.
+  Parameter:  
+    color - (number) value of the color to use (use the colors map)
+
+terminalSetFontBG(bg);
+  Overview:
+    Sets the terminal "font" background to the specified value.
+  Parameter:  
+    bg - (number) value of the color to use (use the colors map)
+
+terminalSetFontAttr(attr);
+  Overview:
+    Sets the terminal "font" attribute to the specified value.
+  Parameter:  
+    attr - (number) value of the color to use (use the attrs map)
+
+resetTerminal;
+  Overview:
+    Resets the terminal by clearing the screen and reseting the font
+    to the terminal default
+  Parameter:  
+    none;
+
+test;
+  Overview:
+    Run the test method of the termcolor module to see different output 
+    formats in action.
+  Parameter:  
+    none;
+
+
+PUBLIC VARIABLES:
+
+colors;
+  Overview:
+    Basically a hashmap of standard terminal color values, used in 
+    setting parameters for several termcolor functions
+
+attrs;
+  Overview:
+    Basically a hashmap of standard terminal display attribute values,
+    (such as bright, underlined, dim, reverse, ...) used in setting
+    parameters for several termcolor functions
+
+
+
+
+
+==================================
+=                                =
+=         consolelog.js          =
+=                                =
+==================================
+
+terminal console logging module
+
+example usage:
+
+var cl = require("./consolelog");
+
+PUBLIC FUNCTIONS:
+
+log(msg);
+  Overview:
+    writes a message to the console screen.
+    default output format is to use the terminal default settings.
+  Parameters:
+    msg - the message to display to the console.
+
+info(msg);
+  Overview:
+    writes a message to the console screen.
+    default output format is GREEN with BRIGHT attribute
+  Parameters:
+    msg - the message to display to the console.
+
+warn(msg);
+  Overview:
+    writes a message to the console screen.
+    default output format is YELLOW with BRIGHT attribute
+  Parameters:
+    msg - the message to display to the console.
+
+error(msg);
+  Overview:
+    writes a message to the console screen.
+    default output format is RED with BRIGHT attribute
+  Parameters:
+    msg - the message to display to the console.
+
+puts(msg);
+  Overview:
+    an alias of the consolelog.log function for convenience
+
+setLogColor(color);
+  Overview:
+    Sets the output color for standard log messages
+  Parameters:
+    color - (number or string) the termcolor.colors map value or the 
+            upper-cased string name of the color it represents
+
+setInfoColor(color);
+  Overview:
+    Sets the output color for info log messages
+  Parameters:
+    color - (number or string) the termcolor.colors map value or the 
+            upper-cased string name of the color it represents
+
+setWarnColor(color);
+  Overview:
+    Sets the output color for warning messages
+  Parameters:
+    color - (number or string) the termcolor.colors map value or the 
+            upper-cased string name of the color it represents
+
+setErrorColor(color);
+  Overview:
+    Sets the output color for error messages
+  Parameters:
+    color - (number or string) the termcolor.colors map value or the 
+            upper-cased string name of the color it represents
+
+setLogPrefix(prefix);
+  Overview:
+    Sets the prefix string for standard messages
+  Parameters:
+    prefix - (string or function) the prefix to print before each message.
+             if it is a string, just the string will be printed.
+             if it is a function, it should return a string. the function
+             will be evaluated for each message and the returned string 
+             will be printed
+
+setInfoPrefix(prefix);
+  Overview:
+    Sets the prefix string for info messages
+  Parameters:
+    prefix - (string or function) the prefix to print before each message.
+             if it is a string, just the string will be printed.
+             if it is a function, it should return a string. the function
+             will be evaluated for each message and the returned string 
+             will be printed
+
+setWarnPrefix(prefix);
+  Overview:
+    Sets the prefix string for warning messages
+  Parameters:
+    prefix - (string or function) the prefix to print before each message.
+             if it is a string, just the string will be printed.
+             if it is a function, it should return a string. the function
+             will be evaluated for each message and the returned string 
+             will be printed
+
+
+setErrorPrefix(prefix);
+  Overview:
+    Sets the prefix string for error messages
+  Parameters:
+    prefix - (string or function) the prefix to print before each message.
+             if it is a string, just the string will be printed.
+             if it is a function, it should return a string. the function
+             will be evaluated for each message and the returned string 
+             will be printed
+
+setAllPrefix(prefix);
+  Overview:
+    Sets the prefix string for all messages
+  Parameters:
+    prefix - (string or function) the prefix to print before each message.
+             if it is a string, just the string will be printed.
+             if it is a function, it should return a string. the function
+             will be evaluated for each message and the returned string 
+             will be printed
+
+setLogPostfix(prefix);
+  Overview:
+    Sets the postfix string for standard messages
+  Parameters:
+    postfix - (string or function) the postfix to print before each message.
+              if it is a string, just the string will be printed.
+              if it is a function, it should return a string. the function
+              will be evaluated for each message and the returned string 
+              will be printed
+
+setInfoPostfix(postfix);
+  Overview:
+    Sets the postfix string for info messages
+  Parameters:
+    postfix - (string or function) the postfix to print before each message.
+              if it is a string, just the string will be printed.
+              if it is a function, it should return a string. the function
+              will be evaluated for each message and the returned string 
+              will be printed
+
+setWarnPostfix(postfix);
+  Overview:
+    Sets the postfix string for warning messages
+  Parameters:
+    postfix - (string or function) the postfix to print before each message.
+              if it is a string, just the string will be printed.
+              if it is a function, it should return a string. the function
+              will be evaluated for each message and the returned string 
+              will be printed
+
+setErrorPostfix(postfix);
+  Overview:
+    Sets the postfix string for error messages
+  Parameters:
+    postfix - (string or function) the postfix to print before each message.
+              if it is a string, just the string will be printed.
+              if it is a function, it should return a string. the function
+              will be evaluated for each message and the returned string 
+              will be printed
+
+setAllPostfix(postfix);
+  Overview:
+    Sets the postfix string for all messages
+  Parameters:
+    postfix - (string or function) the postfix to print before each message.
+              if it is a string, just the string will be printed.
+              if it is a function, it should return a string. the function
+              will be evaluated for each message and the returned string 
+              will be printed
+
+restoreDefaultColors();
+  Overview:
+    restores the default colors for all message types:
+     log - terminal default
+     info - GREEN and BRIGHT
+     warn - YELLOW and BRIGHT
+     log  - RED and BRIGHT
+
+restoreDefaultPrefixes;
+  Overview:
+    restores the default prefixes for all message types:
+     log  - >>>
+     info - iii
+     warn - ***
+     log  - !!!
+  
+restoreDefaultPostfixes;
+  Overview:
+    restores the default postfixes for all message types (all empty strings)
+
+restoreDefaultPreAndPostfixes;
+  Overview:
+    restores the default prefixes and postfixes for all message types
+
+restoreDefaults;
+  Overview:
+    restores the default colors, prefixes, and postfixes for all message types
+
+test;
+  Overview:
+    a test function which will display most of the capabilities of the consolelog module.
+
+PUBLIC VARIABLES:
+
+tc;
+  Overview:
+    an instance of the internal termcolor object
+
+disableDoubleNewlines;
+  Overview:
+    boolean which determines whether double trailing
+    newlines are removed when a message is logged to
+    the console. Useful for when your message is coming
+    from an outside source (such as a network socket).
+    Default value is true.
+
+
+==================================
+=                                =
+=          CHANGE LOG            =
+=                                =
+==================================
+
+v 0.1.0 (December 11, 2009)
+   - Initial checkin of termcolor and consolelog modules.
