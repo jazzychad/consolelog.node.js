@@ -211,42 +211,18 @@ var dolog = function(type, msg, color, bg, attr) {
 
 var log = function(msg) {
     dolog("standard", msg, logColors.standard, tc.colors.RESET, logAttrs.standard);
-    return;
-    msg = cleanmsg(msg);
-    tc.terminalSetFontAttr(tc.attrs.RESET);
-    tc.terminalSetFont(logColors.standard, tc.colors.RESET, logAttrs.standard);
-    sys.puts(dodads.standard_prefix + msg + dodads.standard_postfix);
-    tc.terminalFontReset();
 };
 
 var info = function(msg) {
     dolog("info", msg, logColors.info, tc.colors.RESET, logAttrs.info);
-    return;
-    msg = cleanmsg(msg);
-    tc.terminalSetFontAttr(tc.attrs.RESET);
-    tc.terminalSetFont(logColors.info, tc.colors.RESET, logAttrs.info);
-    sys.puts(dodads.info_prefix + msg + dodads.info_postfix);
-    tc.terminalFontReset();
 };
 
 var warn = function(msg) {
     dolog("warn", msg, logColors.warn, tc.colors.RESET, logAttrs.warn);
-    return;
-    msg = cleanmsg(msg);
-    tc.terminalSetFontAttr(tc.attrs.RESET);
-    tc.terminalSetFont(logColors.warn, tc.colors.RESET, logAttrs.warn);
-    sys.puts(dodads.warn_prefix + msg + dodads.warn_postfix);
-    tc.terminalFontReset();
 };
 
 var error = function(msg) {
     dolog("error", msg, logColors.error, tc.colors.RESET, logAttrs.error);
-    return;
-    msg = cleanmsg(msg);
-    tc.terminalSetFontAttr(tc.attrs.RESET);
-    tc.terminalSetFont(logColors.error, tc.colors.RESET, logAttrs.error);
-    sys.puts(dodads.error_prefix + msg + dodads.error_postfix);
-    tc.terminalFontReset();
 };
 
 /*
