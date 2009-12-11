@@ -12,7 +12,7 @@
  * Prefixes and postfixes can either be strings or functions that
  * return strings. 
  *
- * See documentation for more info.
+ * See documentation in README for more info.
  *
  * by Chad Etzel - December 11, 2009
  *
@@ -100,6 +100,10 @@ var setErrorColor = function(color) {
     setColor("error", color);
 };
 
+var setDodad = function(type, dodad) {
+    dodads[type] = dodad;  
+};
+
 var setLogPrefix = function(prefix) {
     setDodad("standard_prefix", prefix);
 };
@@ -146,10 +150,6 @@ var setAllPostfix = function(postfix) {
     setErrorPostfix(postfix);
 };
 
-var setDodad = function(type, dodad) {
-    dodads[type] = dodad;  
-};
-
 var restoreDefaultColors = function() {
     setLogColor(logColorsDefaults.standard);
     setInfoColor(logColorsDefaults.info);
@@ -194,15 +194,15 @@ var dolog = function(type, msg, color, bg, attr) {
     tc.terminalSetFontAttr(tc.attrs.RESET);
     tc.terminalSetFont(color, bg, attr);
     var prefix, postfix;
-    if (typeof dodads[type + "_prefix"] == "string") {
-        prefix = dodads[type + "_prefix"];
-    } else {
+    if (typeof dodads[type + "_prefix"] == "function") {
         prefix = dodads[type + "_prefix"]();
-    }
-    if (typeof dodads[type + "_postfix"] == "string") {
-        postfix = dodads[type + "_postfix"];
     } else {
+        prefix = dodads[type + "_prefix"];
+    }
+    if (typeof dodads[type + "_postfix"] == "function") {
         postfix = dodads[type + "_postfix"]();
+    } else {
+        postfix = dodads[type + "_postfix"];
     }
 
     sys.puts(prefix + msg + postfix);
@@ -225,11 +225,6 @@ var error = function(msg) {
     dolog("error", msg, logColors.error, tc.colors.RESET, logAttrs.error);
 };
 
-/*
-var puts = function(msg) {
-    log(msg);
-}
-*/
 var puts = log;
 
 var test = function() {

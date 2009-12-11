@@ -32,6 +32,8 @@ cl.log("8 + 8 = " + (8 + 8));
 cl.puts('consolelog.puts is aliased to log for convenience');
 cl.info("node.js is nifty");
 
+cl.setLogPrefix("log: ");
+cl.log("this message has a new prefix string");
 
 cl.setAllPrefix(function() {
         var d = Date.now();

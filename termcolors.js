@@ -6,7 +6,7 @@
  * I am not an expert in all terminal emulation flavors. I just ported this
  * from my C and PHP termcolor libraries which work the same way.
  *
- * See documentation for more info.
+ * See documentation in README for more info.
  *
  * by Chad Etzel - December 11, 2009
  *
@@ -145,48 +145,8 @@ var test = function(reset) {
 };
 
 /*
-resetTerminal();
-sys.puts("\033[34;22;49m# !\033[39;0;49m ");
-sys.puts("normal");
-sys.puts("\033[36m@@@@");
-sys.puts("\033[0m@@@@@");
-sys.puts("\033[47m@@ee@@");
-sys.puts("");
-terminalFontReset();
-terminalSetFont(colors.YELLOW, colors.RED, attrs.DEFAULT);
-//terminalSetFontColor(colors.YELLOW);
-//terminalSetFontBG(colors.RED);
-sys.puts("HELLO!!!!!");
-sys.puts("");
-terminalFontReset();
-terminalSetFont(colors.YELLOW, colors.RED, attrs.BRIGHT);
-sys.puts("HELLO!!!!!");
-sys.puts("");
-terminalFontReset();
-terminalSetFont(colors.YELLOW, colors.RED, attrs.DIM);
-sys.puts("HELLO!!!!!");
-sys.puts("");
-terminalFontReset();
-terminalSetFont(colors.YELLOW, colors.RED, attrs.UNDERLINE);
-sys.puts("HELLO!!!!!");
-sys.puts("");
-terminalFontReset();
-terminalSetFont(colors.YELLOW, colors.RED, attrs.BLINK);
-sys.puts("HELLO!!!!!");
-sys.puts("");
-terminalFontReset();
-terminalSetFont(colors.YELLOW, colors.RED, attrs.REVERSE);
-sys.puts("HELLO!!!!!");
-sys.puts("");
-terminalFontReset();
-terminalSetFont(colors.YELLOW, colors.RED, attrs.HIDDEN);
-sys.puts("HELLO!!!!!");
-sys.puts("");
-terminalFontReset();
+test();
 */
-
-
-//test();
 
 
 
