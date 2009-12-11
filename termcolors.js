@@ -18,24 +18,24 @@ var sys = require("sys");
 
 
 var attrs = {  "RESET":     0,
-	       "BRIGHT":    1,
-	       "DIM":       2, /* or underline */
-	       "UNDERLINE": 3, /* or reverse */
-	       "BLINK":     4, /* or underline */
-	       "REVERSE":   7, 
-	       "HIDDEN":    8, /* or no effect */
-	       "DEFAULT":   9
+               "BRIGHT":    1,
+               "DIM":       2, /* or underline */
+               "UNDERLINE": 3, /* or reverse */
+               "BLINK":     4, /* or underline */
+               "REVERSE":   7, 
+               "HIDDEN":    8, /* or no effect */
+               "DEFAULT":   9
               };
 
 var colors = {  "BLACK":    0,
-		"RED":      1,
-		"GREEN":    2,
-		"YELLOW":   3,
-		"BLUE":     4,
-		"MAGENTA":  5,
-		"CYAN":     6,
-		"WHITE":    7,
-		"RESET":    9
+                "RED":      1,
+                "GREEN":    2,
+                "YELLOW":   3,
+                "BLUE":     4,
+                "MAGENTA":  5,
+                "CYAN":     6,
+                "WHITE":    7,
+                "RESET":    9
                };
 
 var TERM_ESCAPE = "\033[";
@@ -96,15 +96,15 @@ var resetTerminal = function() {
 var test = function(reset) {
 
     if (arguments.length && reset) {
-	resetTerminal();
+        resetTerminal();
     }
     terminalFontReset();
     sys.puts("");
     sys.puts(">>>>> FONT COLOR TEST <<<<<<");
     sys.puts("");
     for (var i in colors) {
-	terminalSetFontColor(colors[i]);
-	sys.puts(i);
+        terminalSetFontColor(colors[i]);
+        sys.puts(i);
     }
     terminalFontReset();
     sys.puts("");
@@ -112,8 +112,8 @@ var test = function(reset) {
     sys.puts("");
     terminalSetFontColor(colors.BLACK);
     for (var i in colors) {
-	terminalSetFontBG(colors[i]);
-	sys.puts(i);
+        terminalSetFontBG(colors[i]);
+        sys.puts(i);
     }
     terminalFontReset();
     sys.puts("");
@@ -121,8 +121,8 @@ var test = function(reset) {
     sys.puts("");
     terminalSetFontAttr(attrs.BRIGHT);
     for (var i in colors) {
-	terminalSetFontColor(colors[i]);
-	sys.puts(i);
+        terminalSetFontColor(colors[i]);
+        sys.puts(i);
     }
     terminalFontReset();
 

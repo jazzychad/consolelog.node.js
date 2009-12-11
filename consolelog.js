@@ -27,60 +27,60 @@ var disableDoubleNewlines = true;
 
 var dodads = {
                "standard_prefix"  : ">>> ",
-	       "standard_postfix" : "",
-	       "info_prefix"      : "iii ",
-	       "info_postfix"     : "",
-	       "warn_prefix"      : "*** ",
-	       "warn_postfix"     : "",
-	       "error_prefix"     : "!!! ",
-	       "error_postfix"    : ""
+               "standard_postfix" : "",
+               "info_prefix"      : "iii ",
+               "info_postfix"     : "",
+               "warn_prefix"      : "*** ",
+               "warn_postfix"     : "",
+               "error_prefix"     : "!!! ",
+               "error_postfix"    : ""
              };
 
 var dodadsDefaults = {
                "standard_prefix"  : ">>> ",
-	       "standard_postfix" : "",
-	       "info_prefix"      : "iii ",
-	       "info_postfix"     : "",
-	       "warn_prefix"      : "*** ",
-	       "warn_postfix"     : "",
-	       "error_prefix"     : "!!! ",
-	       "error_postfix"    : ""
+               "standard_postfix" : "",
+               "info_prefix"      : "iii ",
+               "info_postfix"     : "",
+               "warn_prefix"      : "*** ",
+               "warn_postfix"     : "",
+               "error_prefix"     : "!!! ",
+               "error_postfix"    : ""
              };
 
 var logColors = {
                  "standard"  : tc.colors.RESET,
-		 "info"      : tc.colors.GREEN,
-		 "warn"      : tc.colors.YELLOW,
-		 "error"     : tc.colors.RED
+                 "info"      : tc.colors.GREEN,
+                 "warn"      : tc.colors.YELLOW,
+                 "error"     : tc.colors.RED
                 };
 
 var logColorsDefaults = {
                  "standard"  : tc.colors.RESET,
-		 "info"      : tc.colors.GREEN,
-		 "warn"      : tc.colors.YELLOW,
-		 "error"     : tc.colors.RED
+                 "info"      : tc.colors.GREEN,
+                 "warn"      : tc.colors.YELLOW,
+                 "error"     : tc.colors.RED
                 };
 
 var logAttrs = {
                  "standard"  : tc.attrs.DEFAULT,
-		 "info"      : tc.attrs.BRIGHT,
-		 "warn"      : tc.attrs.BRIGHT,
-		 "error"     : tc.attrs.BRIGHT
+                 "info"      : tc.attrs.BRIGHT,
+                 "warn"      : tc.attrs.BRIGHT,
+                 "error"     : tc.attrs.BRIGHT
                 };
 
 var logAttrsDefaults = {
                  "standard"  : tc.attrs.DEFAULT,
-		 "info"      : tc.attrs.BRIGHT,
-		 "warn"      : tc.attrs.BRIGHT,
-		 "error"     : tc.attrs.BRIGHT
+                 "info"      : tc.attrs.BRIGHT,
+                 "warn"      : tc.attrs.BRIGHT,
+                 "error"     : tc.attrs.BRIGHT
                 };
 
 
 var setColor = function(type, color) {
     if (typeof color == "number") {
-	logColors[type] = color;
+        logColors[type] = color;
     } else {
-	logColors[type] = tc.colors[color];
+        logColors[type] = tc.colors[color];
     }
 };
 
@@ -183,8 +183,8 @@ var restoreDefaults = function() {
 
 var cleanmsg = function(msg) {
     if (disableDoubleNewlines) {
-	msg = msg.replace(/\r\n$/, "");
-	msg = msg.replace(/\n$/, "");
+        msg = msg.replace(/\r\n$/, "");
+        msg = msg.replace(/\n$/, "");
     }
     return msg;
 };
@@ -195,14 +195,14 @@ var dolog = function(type, msg, color, bg, attr) {
     tc.terminalSetFont(color, bg, attr);
     var prefix, postfix;
     if (typeof dodads[type + "_prefix"] == "string") {
-	prefix = dodads[type + "_prefix"];
+        prefix = dodads[type + "_prefix"];
     } else {
-	prefix = dodads[type + "_prefix"]();
+        prefix = dodads[type + "_prefix"]();
     }
     if (typeof dodads[type + "_postfix"] == "string") {
-	postfix = dodads[type + "_postfix"];
+        postfix = dodads[type + "_postfix"];
     } else {
-	postfix = dodads[type + "_postfix"]();
+        postfix = dodads[type + "_postfix"]();
     }
 
     sys.puts(prefix + msg + postfix);

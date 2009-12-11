@@ -34,8 +34,8 @@ cl.info("node.js is nifty");
 
 
 cl.setAllPrefix(function() {
-	var d = Date.now();
-	return "[" + d + "] ";
+        var d = Date.now();
+        return "[" + d + "] ";
     });
 
 cl.log("prefixes can be functions, too");
